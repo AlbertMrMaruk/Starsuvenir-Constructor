@@ -1,10 +1,10 @@
 import { useCallback, useState } from "react";
-import Navbar from "./components/Navbar";
+import Navbar from "src/components/Navbar";
 import { AiFillCloseCircle, AiFillDelete } from "react-icons/ai";
-import CanvasComponent from "./components/CanvasComponent";
-import Product from "./components/Product";
+import CanvasComponent from "src/components/CanvasComponent";
+import Product from "../../src/components/Product";
 import html2canvas from "html2canvas";
-import products from "./components/Products";
+import products from "../../src/components/Products";
 export default function Constructor() {
   // Получение параметрова ссылки (Id Продукта)
   const paramsSearch = document.location.search;

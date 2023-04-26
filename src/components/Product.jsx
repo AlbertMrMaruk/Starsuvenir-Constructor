@@ -1,4 +1,3 @@
-import { useState } from "react";
 import { AiOutlineShoppingCart } from "react-icons/ai";
 import { FaCheck, FaPen, FaRubleSign } from "react-icons/fa";
 
@@ -61,7 +60,7 @@ function Product({
               <button
                 className={`sizes-button `}
                 style={{
-                  backgroundColor: "green",
+                  backgroundColor: "#ccc",
                   color: "#223873",
                   padding: "0.4rem 0.5rem",
                 }}
