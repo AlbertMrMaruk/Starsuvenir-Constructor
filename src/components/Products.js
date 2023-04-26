@@ -1,10 +1,16 @@
+import futb2 from "../assets/futb2.png";
+import futb from "../assets/futb.png";
+import hoodie from "../assets/hoodie.png";
+import krusk from "../assets/krusk.png";
+import beysb from "../assets/beysb.png";
+
 const products = [
   {
     id: 1,
     url: "https://starsuvenir.ru/promo-odezhda/futbolki-dlya-promo/",
     name: "Футболки хлопок на заказ",
-    img: "https://starsuvenir.ru/wa-data/public/site/themes/ahead/assets/img/futb.714567385e70d9b055d5.png",
-    width: "86%",
+    img: futb2,
+    width: "96%",
     height: "80%",
     margin: "10rem auto 0",
     contWidth: "300",
@@ -21,7 +27,8 @@ const products = [
     id: 2,
     url: "https://starsuvenir.ru/promo-odezhda/futbolki-dlya-promo/",
     name: "Футболки полиэстер на заказ ",
-    img: "https://starsuvenir.ru/wa-data/public/site/themes/ahead/assets/img/futb.714567385e70d9b055d5.png",
+    img: futb,
+    //"https://starsuvenir.ru/wa-data/public/site/themes/ahead/assets/img/futb.714567385e70d9b055d5.png"
     width: "86%",
     height: "80%",
     margin: "10rem auto 0",
@@ -39,7 +46,8 @@ const products = [
     id: 3,
     url: "https://starsuvenir.ru/magnity-standartnoy-formy.php",
     name: "Бейсболки на заказ",
-    img: "https://starsuvenir.ru/wa-data/public/site/themes/ahead/assets/img/beysb.679c8bbb0978d05920a9.png",
+    img: beysb,
+    //"https://starsuvenir.ru/wa-data/public/site/themes/ahead/assets/img/beysb.679c8bbb0978d05920a9.png"
     width: "50%",
     height: "40%",
     margin: "6.5rem auto 0",
@@ -55,7 +63,8 @@ const products = [
     id: 4,
     url: "https://starsuvenir.ru/magnity-standartnoy-formy.php",
     name: "Кружки на заказ",
-    img: "https://starsuvenir.ru/wa-data/public/site/themes/ahead/assets/img/krusk.70920290a1ee21840c53.png",
+    img: krusk,
+    // "https://starsuvenir.ru/wa-data/public/site/themes/ahead/assets/img/krusk.70920290a1ee21840c53.png"
     width: "65%",
     height: "60%",
     margin: "6.5rem 5rem 0 1.25rem",
@@ -85,20 +94,21 @@ const products = [
   {
     id: 6,
     url: "https://starsuvenir.ru/magnity-standartnoy-formy.php",
-    name: "Толстовка на заказ",
-    img: "https://starsuvenir.ru/wa-data/public/site/themes/ahead/assets/img/hoodie.0fb6d3c530dd17e4f95e.png",
-    width: "75%",
+    name: "Толстовка полиэстер на заказ",
+    img: hoodie,
+    //"https://starsuvenir.ru/wa-data/public/site/themes/ahead/assets/img/hoodie.0fb6d3c530dd17e4f95e.png"
+    width: "80%",
     height: "85%",
-    margin: "16rem auto 0",
-    contWidth: "200",
-    contHeight: "200",
+    margin: "10rem auto 0 auto",
+    contWidth: "250",
+    contHeight: "310",
     razmers: [
-      { text: "300x310мм", width: 90, height: 100 },
-      { text: "300x200мм", width: 300, height: 200 },
+      { text: "300x310мм", width: 250, height: 310 },
+      { text: "300x200мм", width: 250, height: 200 },
       { text: "200x300мм", width: 200, height: 300 },
       { text: "150x200мм", width: 150, height: 200 },
     ],
-    prices: [2.1, 2.63, 3.97, 3.5, 5.17],
+    prices: [2050, 2000, 1950, 1850],
   },
 ];
 export default products;
