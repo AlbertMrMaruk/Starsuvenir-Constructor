@@ -43,7 +43,7 @@ main {
 }
 
 .hidden {
-  display: none;
+  display: none !important;
 }
 .img-wrapp {
   display: flex;
@@ -133,20 +133,6 @@ ul {
   margin: 1rem 0 1rem 0;
 }
 
-.fileUpload {
-  cursor: pointer;
-  position: absolute;
-  transform: translateX(-50%);
-  font-size: 16px;
-  font-weight: 600;
-  top: 10.5rem;
-  left: 50%;
-  text-align: center;
-  background-color: white;
-  border-radius: 10px;
-  width: 150px;
-  padding: 0.4rem;
-}
 aside {
   height: 100%;
   padding: 1rem 0;
@@ -230,9 +216,30 @@ aside {
   text-decoration: none;
   color: var(--primary-color);
 }
-.fileUpload {
+.addObject {
+  display: flex;
+  position: absolute;
+  top: 10.5rem;
+
+  left: 50%;
+  transform: translateX(-50%);
+}
+.btn-add {
+  cursor: pointer;
+  font-size: 16px;
+  font-weight: 600;
+  text-align: center;
+  background-color: white;
+  border-radius: 10px;
+  width: 150px;
+  padding: 0.4rem;
   max-height: 36px;
 }
+
+.btn-add:first-child {
+  margin-right: 1rem;
+}
+
 input#file {
   position: relative;
   width: 100%;
@@ -241,8 +248,7 @@ input#file {
   top: -1.5rem;
   opacity: 0;
 }
-/* 
- */
+
 .resize-container {
   position: relative;
   display: inline-block;
@@ -401,6 +407,7 @@ input#file {
 /* CSS property for slider */
 input[type="range"] {
   -webkit-appearance: none;
+  appearance: none;
   height: 10px;
   width: 80%;
   border-radius: 50px;
