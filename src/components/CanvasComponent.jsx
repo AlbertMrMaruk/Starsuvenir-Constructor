@@ -24,7 +24,6 @@ function CanvasComponent({ src, text }) {
       }
     };
     useEffect(() => {
-      console.log("DDd");
       const canvas = canvasRef.current;
       container = document.querySelector(".resize-container");
       canvas_wrapp = document.querySelector(".canvas-wrapp");
@@ -35,7 +34,7 @@ function CanvasComponent({ src, text }) {
       draw(context);
     }, [draw]);
 
-    return <canvas id="mainCanvas" height="300" ref={canvasRef} {...props} />;
+    return <canvas id="mainCanvas" height={300} ref={canvasRef} {...props} />;
   };
   const startResize = (e) => {
     e.preventDefault();
@@ -90,10 +89,9 @@ function CanvasComponent({ src, text }) {
       resize_canvas.getContext("2d").drawImage(orig_src, 0, 0, width, height);
     } else {
       let ctx = resize_canvas.getContext("2d");
-      ctx.font = `${width / 10}px Arial`;
+      ctx.font = `25px Arial`;
       ctx.fillStyle = "white";
-      ctx.fillText(text, 10, 40);
-      // resize_canvas.getContext("2d").fillText(text, 10, 20);
+      ctx.fillText(text, 10, 50);
     }
 
     // image_target.src = resize_canvas.toDataURL("image/png");

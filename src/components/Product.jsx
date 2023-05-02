@@ -13,6 +13,7 @@ function Product({
   activeProduct,
   setActivePrice,
   activePrice,
+  setActiveBorder,
 }) {
   const changeRazmer = (str, width, height, index) => {
     setActiveRazmer(str);
@@ -52,7 +53,22 @@ function Product({
               </div>
             ))}
           </div>
+          <div className="product__charact-size__switch">
+            <input
+              type="checkbox"
+              name="switchBorderContainer"
+              id="switchBorderContainer"
+              onChange={() => setActiveBorder((border) => !border)}
+            />
+            <label
+              htmlFor="switchBorderContainer"
+              className="product__charact-size__switch__text"
+            >
+              Скрыть границы
+            </label>
+          </div>
         </div>
+
         <div className="charact-wrapp">
           <span className="charact-text-primary">Цвет: </span>
           <div className="sizes-container">

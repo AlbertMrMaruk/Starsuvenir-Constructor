@@ -328,6 +328,17 @@ input#file {
   font-size: 15px;
   margin-top: 10px;
 }
+#switchBorderContainer {
+  transform: scale(1.2);
+  vertical-align: middle;
+}
+.product__charact-size__switch__text {
+  vertical-align: middle;
+  font-size: 14px;
+  font-weight: 600;
+  color: #1536a1;
+  margin-left: 0.3rem;
+}
 .sizes-container {
   display: flex;
   flex-wrap: wrap;
