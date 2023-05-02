@@ -1,7 +1,7 @@
 import { FaPhoneAlt, FaEnvelope } from "react-icons/fa";
 import { AiOutlinePlus } from "react-icons/ai";
 import { useState } from "react";
-function Navbar({ setSrc, setFiles }) {
+function Navbar({ setSrc, setFiles, setText }) {
   const [showUpload, setShowUpload] = useState(false);
   return (
     <header className="navbar">
@@ -44,20 +44,30 @@ function Navbar({ setSrc, setFiles }) {
         >
           <AiOutlinePlus />
         </button>
-        <div className={`fileUpload ${!showUpload ? "hidden" : ""}`}>
-          Изображение
-          <input
-            type="file"
-            onChange={(e) => {
-              let fr = new FileReader();
-              fr.onload = function (e) {
-                setSrc(e.target.result);
-                setFiles((pre) => [...pre, { src: e.target.result }]);
-              };
-              fr.readAsDataURL(e.target.files[0]);
+        <div className={`addObject ${!showUpload ? "hidden" : ""}`}>
+          <div className={`btn-add `}>
+            Изображение
+            <input
+              type="file"
+              onChange={(e) => {
+                let fr = new FileReader();
+                fr.onload = function (e) {
+                  setSrc(e.target.result);
+                  setFiles((pre) => [...pre, { src: e.target.result }]);
+                };
+                fr.readAsDataURL(e.target.files[0]);
+              }}
+              id="file"
+            />
+          </div>
+          <div
+            className={`btn-add`}
+            onClick={() => {
+              setText("Hello, world");
             }}
-            id="file"
-          />
+          >
+            Текст
+          </div>
         </div>
       </div>
     </header>

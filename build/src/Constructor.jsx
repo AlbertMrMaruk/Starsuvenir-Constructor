@@ -1,10 +1,10 @@
 import { useCallback, useState } from "react";
-import Navbar from "./components/Navbar";
+import Navbar from "src/components/Navbar";
 import { AiFillCloseCircle, AiFillDelete } from "react-icons/ai";
-import CanvasComponent from "./components/CanvasComponent";
-import Product from "./components/Product";
+import CanvasComponent from "src/components/CanvasComponent";
+import Product from "../../src/components/Product";
 import html2canvas from "html2canvas";
-import products from "./components/Products";
+import products from "../../src/components/Products";
 export default function Constructor() {
   // Получение параметрова ссылки (Id Продукта)
   const paramsSearch = document.location.search;
@@ -20,9 +20,7 @@ export default function Constructor() {
   const [activeImg, setActiveImg] = useState(0);
   const [productsModal, setProductsModal] = useState(false);
   const [src, setSrc] = useState("");
-  const [text, setText] = useState("");
   const addSrc = useCallback((newSrc) => setSrc(newSrc), [src]);
-  const addText = useCallback((newText) => setText(newText), [text]);
   const [color, setColor] = useState("transparent");
   const [contHeight, setContHeight] = useState(activeProduct.contHeight);
   const [modal, setModal] = useState(false);
@@ -97,7 +95,7 @@ export default function Constructor() {
   };
   return (
     <>
-      <Navbar setSrc={addSrc} setText={addText} setFiles={addText} />
+      <Navbar setSrc={addSrc} setFiles={setFiles} />
       <main>
         <div className="container grid-main-columns">
           <aside>
@@ -160,7 +158,7 @@ export default function Constructor() {
                 height: +contHeight,
               }}
             >
-              <CanvasComponent src={src} text={text} />
+              <CanvasComponent src={src} />
             </div>
           </div>
 
