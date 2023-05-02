@@ -1,7 +1,7 @@
 import React, { useRef, useEffect } from "react";
 import { memo } from "react";
-function CanvasComponent({ src }) {
-  if (src === "") return "";
+function CanvasComponent({ src, text }) {
+  if (src === "" && text === "") return "";
   const orig_src = new Image();
   let container;
   let resize_canvas;
@@ -10,14 +10,21 @@ function CanvasComponent({ src }) {
     const canvasRef = useRef(null);
     const draw = (ctx) => {
       ctx.beginPath();
-      orig_src.src = src;
-      orig_src.onload = function () {
-        // Событие onLoad, ждём момента пока загрузится изображение
-        // ctx.drawImage(orig_src, 0, 0, 400, 400); // Рисуем изображение от точки с координатами 0, 0
-        resizeImage(300, 300);
-      };
+      if (src) {
+        orig_src.src = src;
+        orig_src.onload = function () {
+          // Событие onLoad, ждём момента пока загрузится изображение
+          // ctx.drawImage(orig_src, 0, 0, 400, 400); // Рисуем изображение от точки с координатами 0, 0
+          resizeImage(300, 300);
+        };
+      } else {
+        ctx.font = `25px Arial`;
+        ctx.fillStyle = "white";
+        ctx.fillText(text, 10, 20);
+      }
     };
     useEffect(() => {
+      console.log("DDd");
       const canvas = canvasRef.current;
       container = document.querySelector(".resize-container");
       canvas_wrapp = document.querySelector(".canvas-wrapp");
@@ -79,7 +86,16 @@ function CanvasComponent({ src }) {
   const resizeImage = function (width, height) {
     resize_canvas.width = width;
     resize_canvas.height = height;
-    resize_canvas.getContext("2d").drawImage(orig_src, 0, 0, width, height);
+    if (src) {
+      resize_canvas.getContext("2d").drawImage(orig_src, 0, 0, width, height);
+    } else {
+      let ctx = resize_canvas.getContext("2d");
+      ctx.font = `${width / 10}px Arial`;
+      ctx.fillStyle = "white";
+      ctx.fillText(text, 10, 40);
+      // resize_canvas.getContext("2d").fillText(text, 10, 20);
+    }
+
     // image_target.src = resize_canvas.toDataURL("image/png");
   };
   const resizing = function (e) {

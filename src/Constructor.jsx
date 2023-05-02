@@ -20,7 +20,9 @@ export default function Constructor() {
   const [activeImg, setActiveImg] = useState(0);
   const [productsModal, setProductsModal] = useState(false);
   const [src, setSrc] = useState("");
+  const [text, setText] = useState("");
   const addSrc = useCallback((newSrc) => setSrc(newSrc), [src]);
+  const addText = useCallback((newText) => setText(newText), [text]);
   const [color, setColor] = useState("transparent");
   const [contHeight, setContHeight] = useState(activeProduct.contHeight);
   const [modal, setModal] = useState(false);
@@ -95,7 +97,7 @@ export default function Constructor() {
   };
   return (
     <>
-      <Navbar setSrc={addSrc} setFiles={setFiles} />
+      <Navbar setSrc={addSrc} setText={addText} setFiles={addText} />
       <main>
         <div className="container grid-main-columns">
           <aside>
@@ -158,7 +160,7 @@ export default function Constructor() {
                 height: +contHeight,
               }}
             >
-              <CanvasComponent src={src} />
+              <CanvasComponent src={src} text={text} />
             </div>
           </div>
 
