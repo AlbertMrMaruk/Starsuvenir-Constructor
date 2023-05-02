@@ -14,6 +14,7 @@ export default function Constructor() {
   const [activeRazmer, setActiveRazmer] = useState(
     activeProduct.razmers[0].text
   );
+  const [activeBorder, setActiveBorder] = useState(true);
   const [activePrice, setActivePrice] = useState(activeProduct.prices[0]);
   const [files, setFiles] = useState([]);
   const [activeEl, setActiveEl] = useState("product");
@@ -149,13 +150,13 @@ export default function Constructor() {
               height: activeProduct.height,
             }}
           >
-            {console.log(contWidth)}
             <div
               className="canvas-wrapp"
               style={{
                 margin: activeProduct.margin,
                 backgroundColor:
                   color == "transparent" ? color : `rgb(${color.join(",")})`,
+                border: activeBorder ? "2px dotted #c2c2c2" : "none",
                 width: +contWidth,
                 height: +contHeight,
               }}
@@ -183,6 +184,7 @@ export default function Constructor() {
               {activeEl === "product" && (
                 <Product
                   color={color}
+                  setActiveBorder={setActiveBorder}
                   setColor={setColor}
                   setContHeight={setContHeight}
                   setContWidth={setContWidth}
