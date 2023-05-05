@@ -5,6 +5,7 @@ import CanvasComponent from "./components/CanvasComponent";
 import Product from "./components/Product";
 import html2canvas from "html2canvas";
 import products from "./components/Products";
+import { FaCheck } from "react-icons/fa";
 export default function Constructor() {
   // Получение параметрова ссылки (Id Продукта)
   const paramsSearch = document.location.search;
@@ -196,6 +197,84 @@ export default function Constructor() {
                   activePrice={activePrice}
                   setActivePrice={setActivePrice}
                 />
+              )}
+              {activeEl === "object" && (
+                <div className="aside-content">
+                  <h4>Введите ваш текст:</h4>
+                  <input type="text" name="text" id="text" />
+                  <div className="charact-wrapp">
+                    <span className="charact-text-primary">Цвет текста: </span>
+                    <div className="sizes-container">
+                      <div>
+                        <button
+                          className={`sizes-button `}
+                          style={{
+                            backgroundColor: "#ccc",
+                            color: "#223873",
+                            padding: "0.4rem 0.5rem",
+                          }}
+                          onClick={() => setColor("transparent")}
+                        >
+                          <FaCheck
+                            size={"1.1em"}
+                            style={{
+                              opacity: color === "transparent" ? "1" : "0",
+                            }}
+                          />
+                        </button>
+                      </div>
+                      <div>
+                        <button
+                          className={`sizes-button `}
+                          style={{
+                            backgroundColor: "rgb(255,255,255)",
+                            color: "#223873",
+                            padding: "0.4rem 0.5rem",
+                          }}
+                          onClick={() => setColor([255, 255, 255])}
+                        >
+                          <FaCheck
+                            size={"1.1em"}
+                            style={{
+                              opacity:
+                                color[0] === 255 &&
+                                color[1] === 255 &&
+                                color[2] === 255
+                                  ? "1"
+                                  : "0",
+                            }}
+                          />
+                        </button>
+                      </div>
+
+                      <div>
+                        <button
+                          className={`sizes-button`}
+                          style={{
+                            backgroundColor: "rgb(0,0,0)",
+                            color: "white",
+                            padding: "0.4rem 0.5rem",
+                          }}
+                          onClick={() => setColor([0, 0, 0])}
+                        >
+                          <FaCheck
+                            size={"1.1em"}
+                            style={{
+                              opacity:
+                                color[0] === 0 &&
+                                color[1] === 0 &&
+                                color[2] === 0
+                                  ? "1"
+                                  : "0",
+                            }}
+                          />
+                        </button>
+                      </div>
+                    </div>
+                  </div>
+                  <span className="charact-text-primary">Размер текста: </span>
+                  <input type="text" name="size" id="size" />
+                </div>
               )}
             </div>
           </aside>
