@@ -4,8 +4,9 @@ import { AiFillCloseCircle, AiFillDelete } from "react-icons/ai";
 import CanvasComponent from "./components/CanvasComponent";
 import Product from "./components/Product";
 import html2canvas from "html2canvas";
-import products from "./components/Products";
+import { products, fonts } from "./components/Products";
 import { FaCheck } from "react-icons/fa";
+
 export default function Constructor() {
   // Получение параметрова ссылки (Id Продукта)
   const paramsSearch = document.location.search;
@@ -24,11 +25,21 @@ export default function Constructor() {
   const [src, setSrc] = useState("");
   const [text, setText] = useState("");
   const [fontColor, setFontColor] = useState(["white", [255, 255, 255]]);
+  const [fontFamily, setFontFamily] = useState("Open Sans");
+  const [fontSize, setFontSize] = useState(16);
   const addSrc = useCallback((newSrc) => setSrc(newSrc), [src]);
   const addText = useCallback((newText) => setText(newText), [text]);
+  const addFontFamily = useCallback(
+    (newFontFamily) => setFontFamily(newFontFamily),
+    [fontFamily]
+  );
   const addFontColor = useCallback(
     (newFontColor) => setFontColor(newFontColor),
     [fontColor]
+  );
+  const addFontSize = useCallback(
+    (newFontSize) => setFontSize(newFontSize),
+    [fontSize]
   );
   const [color, setColor] = useState("transparent");
 
@@ -168,7 +179,13 @@ export default function Constructor() {
                 height: +contHeight,
               }}
             >
-              <CanvasComponent src={src} text={text} fontColor={fontColor} />
+              <CanvasComponent
+                src={src}
+                text={text}
+                fontColor={fontColor}
+                fontSize={fontSize}
+                fontFamily={fontFamily}
+              />
             </div>
           </div>
 
@@ -182,10 +199,12 @@ export default function Constructor() {
                   Продукт
                 </div>
                 <div
-                  onClick={() => setActiveEl("object")}
+                  onClick={() => {
+                    setActiveEl("object");
+                  }}
                   className={activeEl === "object" ? "activePage" : ""}
                 >
-                  Объект
+                  Текст
                 </div>
               </div>
               {activeEl === "product" && (
@@ -206,113 +225,147 @@ export default function Constructor() {
               )}
               {activeEl === "object" && (
                 <div className="aside-content">
-                  <h4>Введите ваш текст:</h4>
+                  <h4 className="object__aside-content__text">
+                    Введите ваш текст:
+                  </h4>
                   <textarea
                     type="text"
                     name="text"
+                    value={text}
                     id="text"
+                    placeholder="Напишите текст"
+                    className="object__aside-content__textarea"
                     onChange={(e) => addText(e.target.value)}
                   />
-                  <div className="charact-wrapp">
-                    <span className="charact-text-primary">Цвет текста: </span>
-                    <div className="sizes-container">
-                      <div>
-                        <button
-                          className={`sizes-button `}
-                          style={{
-                            backgroundColor: "rgb(255,255,255)",
-                            color: "#223873",
-                            padding: "0.4rem 0.5rem",
-                          }}
-                          onClick={() =>
-                            addFontColor(["white", [255, 255, 255]])
-                          }
-                        >
-                          <FaCheck
-                            size={"1.1em"}
-                            style={{
-                              opacity: fontColor[0] === "white" ? "1" : "0",
-                            }}
-                          />
-                        </button>
-                      </div>
 
-                      <div>
-                        <button
-                          className={`sizes-button`}
+                  <h4 className="object__aside-content__text">Цвет текста:</h4>
+                  <div className="sizes-container">
+                    <div>
+                      <button
+                        className={`sizes-button `}
+                        style={{
+                          backgroundColor: "rgb(255,255,255)",
+                          color: "#223873",
+                          padding: "0.4rem 0.5rem",
+                        }}
+                        onClick={() => addFontColor(["white", [255, 255, 255]])}
+                      >
+                        <FaCheck
+                          size={"1.1em"}
                           style={{
-                            backgroundColor: "rgb(0,0,0)",
-                            color: "white",
-                            padding: "0.4rem 0.5rem",
+                            opacity: fontColor[0] === "white" ? "1" : "0",
                           }}
-                          onClick={() => addFontColor(["black", [0, 0, 0]])}
-                        >
-                          <FaCheck
-                            size={"1.1em"}
-                            style={{
-                              opacity: fontColor[0] === "black" ? "1" : "0",
-                            }}
-                          />
-                        </button>
-                      </div>
-                      <div>
-                        <button
-                          className={`sizes-button`}
+                        />
+                      </button>
+                    </div>
+
+                    <div>
+                      <button
+                        className={`sizes-button`}
+                        style={{
+                          backgroundColor: "rgb(0,0,0)",
+                          color: "white",
+                          padding: "0.4rem 0.5rem",
+                        }}
+                        onClick={() => addFontColor(["black", [0, 0, 0]])}
+                      >
+                        <FaCheck
+                          size={"1.1em"}
                           style={{
-                            backgroundColor: "rgb(255,0,0)",
-                            color: "white",
-                            padding: "0.4rem 0.5rem",
+                            opacity: fontColor[0] === "black" ? "1" : "0",
                           }}
-                          onClick={() => addFontColor(["red", [255, 0, 0]])}
-                        >
-                          <FaCheck
-                            size={"1.1em"}
-                            style={{
-                              opacity: fontColor[0] === "red" ? "1" : "0",
-                            }}
-                          />
-                        </button>
-                      </div>
-                      <div>
-                        <button
-                          className={`sizes-button`}
+                        />
+                      </button>
+                    </div>
+                    <div>
+                      <button
+                        className={`sizes-button`}
+                        style={{
+                          backgroundColor: "rgb(255,0,0)",
+                          color: "white",
+                          padding: "0.4rem 0.5rem",
+                        }}
+                        onClick={() => addFontColor(["red", [255, 0, 0]])}
+                      >
+                        <FaCheck
+                          size={"1.1em"}
                           style={{
-                            backgroundColor: "rgb(0,0,255)",
-                            color: "white",
-                            padding: "0.4rem 0.5rem",
+                            opacity: fontColor[0] === "red" ? "1" : "0",
                           }}
-                          onClick={() => addFontColor(["blue", [0, 0, 255]])}
-                        >
-                          <FaCheck
-                            size={"1.1em"}
-                            style={{
-                              opacity: fontColor[0] === "blue" ? "1" : "0",
-                            }}
-                          />
-                        </button>
-                      </div>
-                      <div>
-                        <button
-                          className={`sizes-button`}
+                        />
+                      </button>
+                    </div>
+                    <div>
+                      <button
+                        className={`sizes-button`}
+                        style={{
+                          backgroundColor: "rgb(0,0,255)",
+                          color: "white",
+                          padding: "0.4rem 0.5rem",
+                        }}
+                        onClick={() => addFontColor(["blue", [0, 0, 255]])}
+                      >
+                        <FaCheck
+                          size={"1.1em"}
                           style={{
-                            backgroundColor: "rgb(255,255,0)",
-                            color: "black",
-                            padding: "0.4rem 0.5rem",
+                            opacity: fontColor[0] === "blue" ? "1" : "0",
                           }}
-                          onClick={() => addFontColor(["yellow", [0, 0, 255]])}
-                        >
-                          <FaCheck
-                            size={"1.1em"}
-                            style={{
-                              opacity: fontColor[0] === "yellow" ? "1" : "0",
-                            }}
-                          />
-                        </button>
-                      </div>
+                        />
+                      </button>
+                    </div>
+                    <div>
+                      <button
+                        className={`sizes-button`}
+                        style={{
+                          backgroundColor: "rgb(255,255,0)",
+                          color: "black",
+                          padding: "0.4rem 0.5rem",
+                        }}
+                        onClick={() => addFontColor(["yellow", [0, 0, 255]])}
+                      >
+                        <FaCheck
+                          size={"1.1em"}
+                          style={{
+                            opacity: fontColor[0] === "yellow" ? "1" : "0",
+                          }}
+                        />
+                      </button>
                     </div>
                   </div>
-                  <span className="charact-text-primary">Размер текста: </span>
-                  <input type="text" name="size" id="size" />
+
+                  <h4 className="object__aside-content__text">
+                    Размер текста:
+                    <input
+                      type="number"
+                      name="size"
+                      className="object__aside-content__input"
+                      id="size"
+                      value={fontSize}
+                      placeholder="25"
+                      onChange={(e) => addFontSize(e.target.value)}
+                    />
+                    px
+                  </h4>
+                  <h4 className="object__aside-content__text">
+                    Выберите шрифт:
+                    <select
+                      name="fontFamily"
+                      className="object__aside-content__select"
+                      onChange={(e) => addFontFamily(e.target.value)}
+                      value={fontFamily}
+                    >
+                      {fonts.map((el, index) => (
+                        <option
+                          key={index}
+                          value={el}
+                          id={"object__aside-content__font" + index}
+                          style={{ fontFamily: el }}
+                        >
+                          {el}
+                        </option>
+                      ))}
+                    </select>
+                  </h4>
                 </div>
               )}
             </div>
