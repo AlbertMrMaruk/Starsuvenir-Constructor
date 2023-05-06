@@ -1,5 +1,7 @@
 @import url("https://fonts.googleapis.com/css2?family=Open+Sans&display=swap");
 @import url("https://fonts.googleapis.com/css2?family=Open+Sans:wght@700&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Alice&family=Amatic+SC&family=Bebas+Neue&family=Kelly+Slab&family=Lobster&family=Neucha&family=Pacifico&family=Pangolin&family=Prata&family=Roboto&family=Ruslan+Display&family=Russo+One&family=Stalinist+One&display=swap");
+
 * {
   box-sizing: border-box;
 }
@@ -338,6 +340,28 @@ input#file {
   font-weight: 600;
   color: #1536a1;
   margin-left: 0.3rem;
+}
+.aside-content h4.object__aside-content__text {
+  font-size: 16px;
+  font-family: "Open Sans", sans-serif;
+}
+.object__aside-content__input {
+  display: inline-block;
+  margin-left: 1rem;
+  font-weight: 600;
+  margin-right: 0.3rem;
+  font-size: 16px;
+  width: 15%;
+}
+.object__aside-content__select {
+  font-size: 16px;
+  margin-left: 1rem;
+}
+.object__aside-content__textarea {
+  padding: 0.5rem;
+  font-size: 14px;
+  margin-bottom: 0;
+  font-family: Arial, Helvetica, sans-serif;
 }
 .sizes-container {
   display: flex;

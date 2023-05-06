@@ -3,7 +3,23 @@
 // import hoodie from "../assets/hoodie.png";
 // import krusk from "../assets/krusk.png";
 // import beysb from "../assets/beysb.png";
-
+const fonts = [
+  "Open Sans",
+  "Arial",
+  "Roboto",
+  "Bebas Neue",
+  "Russo One",
+  "Kelly Slab",
+  "Alice",
+  "Neucha",
+  "Prata",
+  "Pacifico",
+  "Lobster",
+  "Pangolin",
+  "Amatic SC",
+  "Ruslan Display",
+  "Stalinist One",
+];
 const products = [
   {
     id: 1,
@@ -112,4 +128,4 @@ const products = [
     prices: [2050, 2000, 1950, 1850],
   },
 ];
-export default products;
+export { products, fonts };

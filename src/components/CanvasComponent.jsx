@@ -1,6 +1,6 @@
 import React, { useRef, useEffect } from "react";
 import { memo } from "react";
-function CanvasComponent({ src, text, fontColor }) {
+function CanvasComponent({ src, text, fontColor, fontSize, fontFamily }) {
   if (src === "" && text === "") return "";
   const orig_src = new Image();
   let container;
@@ -18,9 +18,9 @@ function CanvasComponent({ src, text, fontColor }) {
           resizeImage(300, 300);
         };
       } else {
-        ctx.font = `25px Arial`;
+        ctx.font = `${fontSize ?? "25"}px ${fontFamily ?? "Open Sans"}`;
         ctx.fillStyle = fontColor[0] ?? "white";
-        ctx.fillText(text, 10, 20);
+        ctx.fillText(text, 10, 50);
       }
     };
     useEffect(() => {
@@ -28,7 +28,6 @@ function CanvasComponent({ src, text, fontColor }) {
       container = document.querySelector(".resize-container");
       canvas_wrapp = document.querySelector(".canvas-wrapp");
       const context = canvas.getContext("2d");
-      //   image_target = document.querySelector(".resize-image");
       resize_canvas = document.querySelector("#mainCanvas");
       //Our draw come here
       draw(context);
@@ -89,12 +88,10 @@ function CanvasComponent({ src, text, fontColor }) {
       resize_canvas.getContext("2d").drawImage(orig_src, 0, 0, width, height);
     } else {
       let ctx = resize_canvas.getContext("2d");
-      ctx.font = `25px Arial`;
+      ctx.font = `${fontSize ?? "25"}px ${fontFamily ?? "Open Sans"}`;
       ctx.fillStyle = fontColor[0] ?? "white";
       ctx.fillText(text, 10, 50);
     }
-
-    // image_target.src = resize_canvas.toDataURL("image/png");
   };
   const resizing = function (e) {
     let mouse = {};
@@ -201,13 +198,7 @@ function CanvasComponent({ src, text, fontColor }) {
           onMouseDown={startResize}
           className="resize-handle resize-handle-ne"
         ></span>
-        {/* <img
-          className="resize-image"
-          crossOrigin="anonymous"
-          style={{ display: "none" }}
-          //   src={image}
-          alt="Image"
-        /> */}
+
         <Canvas onMouseDown={startMoving} />
         <span
           onMouseDown={startResize}
