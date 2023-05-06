@@ -23,9 +23,15 @@ export default function Constructor() {
   const [productsModal, setProductsModal] = useState(false);
   const [src, setSrc] = useState("");
   const [text, setText] = useState("");
+  const [fontColor, setFontColor] = useState(["white", [255, 255, 255]]);
   const addSrc = useCallback((newSrc) => setSrc(newSrc), [src]);
   const addText = useCallback((newText) => setText(newText), [text]);
+  const addFontColor = useCallback(
+    (newFontColor) => setFontColor(newFontColor),
+    [fontColor]
+  );
   const [color, setColor] = useState("transparent");
+
   const [contHeight, setContHeight] = useState(activeProduct.contHeight);
   const [modal, setModal] = useState(false);
   const [contWidth, setContWidth] = useState(activeProduct.contWidth);
@@ -162,7 +168,7 @@ export default function Constructor() {
                 height: +contHeight,
               }}
             >
-              <CanvasComponent src={src} text={text} />
+              <CanvasComponent src={src} text={text} fontColor={fontColor} />
             </div>
           </div>
 
@@ -201,28 +207,15 @@ export default function Constructor() {
               {activeEl === "object" && (
                 <div className="aside-content">
                   <h4>Введите ваш текст:</h4>
-                  <input type="text" name="text" id="text" />
+                  <textarea
+                    type="text"
+                    name="text"
+                    id="text"
+                    onChange={(e) => addText(e.target.value)}
+                  />
                   <div className="charact-wrapp">
                     <span className="charact-text-primary">Цвет текста: </span>
                     <div className="sizes-container">
-                      <div>
-                        <button
-                          className={`sizes-button `}
-                          style={{
-                            backgroundColor: "#ccc",
-                            color: "#223873",
-                            padding: "0.4rem 0.5rem",
-                          }}
-                          onClick={() => setColor("transparent")}
-                        >
-                          <FaCheck
-                            size={"1.1em"}
-                            style={{
-                              opacity: color === "transparent" ? "1" : "0",
-                            }}
-                          />
-                        </button>
-                      </div>
                       <div>
                         <button
                           className={`sizes-button `}
@@ -231,17 +224,14 @@ export default function Constructor() {
                             color: "#223873",
                             padding: "0.4rem 0.5rem",
                           }}
-                          onClick={() => setColor([255, 255, 255])}
+                          onClick={() =>
+                            addFontColor(["white", [255, 255, 255]])
+                          }
                         >
                           <FaCheck
                             size={"1.1em"}
                             style={{
-                              opacity:
-                                color[0] === 255 &&
-                                color[1] === 255 &&
-                                color[2] === 255
-                                  ? "1"
-                                  : "0",
+                              opacity: fontColor[0] === "white" ? "1" : "0",
                             }}
                           />
                         </button>
@@ -255,17 +245,66 @@ export default function Constructor() {
                             color: "white",
                             padding: "0.4rem 0.5rem",
                           }}
-                          onClick={() => setColor([0, 0, 0])}
+                          onClick={() => addFontColor(["black", [0, 0, 0]])}
                         >
                           <FaCheck
                             size={"1.1em"}
                             style={{
-                              opacity:
-                                color[0] === 0 &&
-                                color[1] === 0 &&
-                                color[2] === 0
-                                  ? "1"
-                                  : "0",
+                              opacity: fontColor[0] === "black" ? "1" : "0",
+                            }}
+                          />
+                        </button>
+                      </div>
+                      <div>
+                        <button
+                          className={`sizes-button`}
+                          style={{
+                            backgroundColor: "rgb(255,0,0)",
+                            color: "white",
+                            padding: "0.4rem 0.5rem",
+                          }}
+                          onClick={() => addFontColor(["red", [255, 0, 0]])}
+                        >
+                          <FaCheck
+                            size={"1.1em"}
+                            style={{
+                              opacity: fontColor[0] === "red" ? "1" : "0",
+                            }}
+                          />
+                        </button>
+                      </div>
+                      <div>
+                        <button
+                          className={`sizes-button`}
+                          style={{
+                            backgroundColor: "rgb(0,0,255)",
+                            color: "white",
+                            padding: "0.4rem 0.5rem",
+                          }}
+                          onClick={() => addFontColor(["blue", [0, 0, 255]])}
+                        >
+                          <FaCheck
+                            size={"1.1em"}
+                            style={{
+                              opacity: fontColor[0] === "blue" ? "1" : "0",
+                            }}
+                          />
+                        </button>
+                      </div>
+                      <div>
+                        <button
+                          className={`sizes-button`}
+                          style={{
+                            backgroundColor: "rgb(255,255,0)",
+                            color: "black",
+                            padding: "0.4rem 0.5rem",
+                          }}
+                          onClick={() => addFontColor(["yellow", [0, 0, 255]])}
+                        >
+                          <FaCheck
+                            size={"1.1em"}
+                            style={{
+                              opacity: fontColor[0] === "yellow" ? "1" : "0",
                             }}
                           />
                         </button>

@@ -1,6 +1,6 @@
 import React, { useRef, useEffect } from "react";
 import { memo } from "react";
-function CanvasComponent({ src, text }) {
+function CanvasComponent({ src, text, fontColor }) {
   if (src === "" && text === "") return "";
   const orig_src = new Image();
   let container;
@@ -19,7 +19,7 @@ function CanvasComponent({ src, text }) {
         };
       } else {
         ctx.font = `25px Arial`;
-        ctx.fillStyle = "white";
+        ctx.fillStyle = fontColor[0] ?? "white";
         ctx.fillText(text, 10, 20);
       }
     };
@@ -90,7 +90,7 @@ function CanvasComponent({ src, text }) {
     } else {
       let ctx = resize_canvas.getContext("2d");
       ctx.font = `25px Arial`;
-      ctx.fillStyle = "white";
+      ctx.fillStyle = fontColor[0] ?? "white";
       ctx.fillText(text, 10, 50);
     }
 
