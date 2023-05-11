@@ -64,6 +64,12 @@ function Navbar({ setSrc, setFiles, setText }) {
             className={`btn-add`}
             onClick={() => {
               setText("Hello, world");
+              setFiles((pre) => [
+                ...pre,
+                {
+                  src: "https://get.wallhere.com/photo/black-simple-background-minimalism-typography-text-white-background-logo-writing-brand-shape-line-font-product-39761.jpg",
+                },
+              ]);
             }}
           >
             Текст

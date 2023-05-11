@@ -116,7 +116,7 @@ export default function Constructor() {
   };
   return (
     <>
-      <Navbar setSrc={addSrc} setText={addText} setFiles={addText} />
+      <Navbar setSrc={addSrc} setText={addText} setFiles={setFiles} />
       <main>
         <div className="container grid-main-columns">
           <aside>
@@ -139,7 +139,7 @@ export default function Constructor() {
                       }}
                     >
                       <img src={file.src} crossOrigin="anonymous" alt="" />
-                      Изображение №{index + 1}
+                      Объект №{index + 1}
                       <div
                         className="icons"
                         onClick={() => {
